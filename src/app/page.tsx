@@ -1,3 +1,4 @@
+import AddPost from '@/components/AddPost/AddPost';
 import { Metadata } from 'next';
 
 // Home page metadata here
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function FeedPage() {
   return (
     <>
-      <h1>Feed</h1>
+      <AddPost />
     </>
   );
 }

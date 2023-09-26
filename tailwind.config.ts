@@ -19,6 +19,9 @@ const config: Config = {
         'primary-red': '#D10708',
         'primary-blue': '#6BA4E9',
       },
+      boxShadow: {
+        'finder-shadow': 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+      }
     },
   },
   plugins: [],

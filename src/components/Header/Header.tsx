@@ -4,7 +4,7 @@ import React from 'react';
 const Header = () => {
   // rendering header component here
   return (
-    <header className='bg-primary-white py-5'>
+    <header className='fixed top-0 w-full bg-primary-white py-5'>
       <nav className='w-[70%] mx-auto flex justify-between'>
         <div>
           <Link href={'/'}>
