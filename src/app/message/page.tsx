@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 export default function MessagePage() {
   return (
     <>
-      <h1>Message page</h1>
+      <h1 className='text-center text-3xl text-primary-red'>
+        No Messages To Show! <br /> Coming Soon!
+      </h1>
     </>
   );
 }
