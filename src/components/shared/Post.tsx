@@ -4,23 +4,17 @@ import { FaRegComment } from 'react-icons/fa';
 import React from 'react';
 import Comments from '../Comments/Comments';
 import Avatar from './Avatar';
+import UserInfo from '../UserInfo/UserInfo';
 
 const Post = () => {
   // rendering the post component here
   return (
     <div className='w-3/5 mx-auto bg-primary-white p-5 rounded-xl shadow-finder-shadow my-5 space-y-4'>
-      <div className='flex items-center space-x-3'>
-        <Avatar src='https://friendkit.cssninja.io/assets/img/avatars/jenna.png' />
-
-        <div>
-          <p className='text-sm text-primary-black font-semibold'>
-            Ema Jackson
-          </p>
-          <span className='block text-xs text-primary-dark-gray'>
-            July 19 2018, 19:42pm
-          </span>
-        </div>
-      </div>
+      <UserInfo
+        imgUrl='https://friendkit.cssninja.io/assets/img/avatars/jenna.png'
+        userName='Ema Jackson'
+        timestamp='July 19 2018, 19:42pm'
+      />
 
       <div>
         <p className='text-primary-black text-sm'>
