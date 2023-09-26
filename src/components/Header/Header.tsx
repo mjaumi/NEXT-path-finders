@@ -5,7 +5,7 @@ const Header = () => {
   // rendering header component here
   return (
     <header className='bg-primary-white py-5'>
-      <nav className='w-4/5 mx-auto flex justify-between'>
+      <nav className='w-[70%] mx-auto flex justify-between'>
         <div>
           <Link href={'/'}>
             <h3 className='text-2xl font-bold text-primary-black uppercase'>
