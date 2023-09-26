@@ -2,22 +2,15 @@ import Image from 'next/image';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComment } from 'react-icons/fa';
 import React from 'react';
+import Comments from '../Comments/Comments';
+import Avatar from '../Avatar/Avatar';
 
 const Post = () => {
   // rendering the post component here
   return (
     <div className='w-3/5 mx-auto bg-primary-white p-5 rounded-xl shadow-finder-shadow my-5 space-y-4'>
       <div className='flex items-center space-x-3'>
-        <div className='w-[40px] h-[40px] rounded-full overflow-hidden'>
-          <Image
-            className='w-auto h-auto'
-            src={'https://friendkit.cssninja.io/assets/img/avatars/jenna.png'}
-            alt='user image'
-            width={0}
-            height={0}
-            sizes='100%'
-          />
-        </div>
+        <Avatar src='https://friendkit.cssninja.io/assets/img/avatars/jenna.png' />
 
         <div>
           <p className='text-sm text-primary-black font-semibold'>
@@ -48,13 +41,15 @@ const Post = () => {
         />
       </div>
 
-      <div className='flex justify-between px-4'>
+      <div className='flex justify-between items-center px-4'>
         <p className='text-sm text-primary-dark-gray'>30 people liked this</p>
         <div className='flex items-center space-x-5'>
           <AiOutlineHeart className='h-7 w-7 text-primary-dark-gray hover:opacity-60 hover:scale-125 duration-300 cursor-pointer' />
           <FaRegComment className='h-6 w-6 text-primary-dark-gray hover:opacity-60 hover:scale-125 duration-300 cursor-pointer' />
         </div>
       </div>
+
+      <Comments />
     </div>
   );
 };

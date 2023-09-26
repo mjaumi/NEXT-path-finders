@@ -1,3 +1,4 @@
+import Post from '@/components/shared/Post/Post';
 import { Metadata } from 'next';
 
 // Media page metadata here
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function MediaPage() {
   return (
     <>
-      <h1>Media page</h1>
+      <Post />
+      <Post />
+      <Post />
+      <Post />
     </>
   );
 }
