@@ -1,4 +1,5 @@
 import AddPost from '@/components/AddPost/AddPost';
+import FeaturedPosts from '@/components/FeaturedPosts/FeaturedPosts';
 import { Metadata } from 'next';
 
 // Home page metadata here
@@ -12,6 +13,7 @@ export default function FeedPage() {
   return (
     <>
       <AddPost />
+      <FeaturedPosts />
     </>
   );
 }

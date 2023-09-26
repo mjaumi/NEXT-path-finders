@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang='en' className={`${poppins.variable}`}>
       <body className='font-poppins bg-primary-light-gray'>
         <Header />
-        <main className='w-[70%] mx-auto min-h-screen py-24'>{children}</main>
+        <main className='w-[70%] mx-auto min-h-screen pt-24'>{children}</main>
         <Footer />
       </body>
     </html>
