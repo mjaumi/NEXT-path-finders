@@ -1,5 +1,5 @@
 import React from 'react';
-import Avatar from '../Avatar/Avatar';
+import Avatar from '../shared/Avatar';
 
 const CommentItem = () => {
   // rendering comment item component here

@@ -3,7 +3,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComment } from 'react-icons/fa';
 import React from 'react';
 import Comments from '../Comments/Comments';
-import Avatar from '../Avatar/Avatar';
+import Avatar from './Avatar';
 
 const Post = () => {
   // rendering the post component here

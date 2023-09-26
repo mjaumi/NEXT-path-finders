@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../shared/Post/Post';
+import Post from '../shared/Post';
 
 const FeaturedPosts = () => {
   // rendering featured posts component here

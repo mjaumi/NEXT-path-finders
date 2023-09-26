@@ -4,7 +4,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { BsSendFill } from 'react-icons/bs';
 import CommentItem from './CommentItem';
-import Avatar from '../Avatar/Avatar';
+import Avatar from '../shared/Avatar';
 
 type NewComment = {
   comment: string;

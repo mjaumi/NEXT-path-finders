@@ -20,7 +20,7 @@ const Avatar = ({
     <div
       style={{ height: height, width: width }}
       className={`rounded-full overflow-hidden ${
-        hasBorder && 'border-4 border-primary-light-gray-gray'
+        hasBorder && 'border-2 border-primary-blue'
       }`}
     >
       <Image

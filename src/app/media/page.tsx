@@ -1,4 +1,4 @@
-import Post from '@/components/shared/Post/Post';
+import Post from '@/components/shared/Post';
 import { Metadata } from 'next';
 
 // Media page metadata here

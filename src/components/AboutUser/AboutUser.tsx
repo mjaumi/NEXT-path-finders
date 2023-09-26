@@ -2,8 +2,8 @@ import React from 'react';
 import { FaUserGraduate } from 'react-icons/fa';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
-import Avatar from '../shared/Avatar/Avatar';
-import Button from '../shared/Button/Button';
+import Avatar from '../shared/Avatar';
+import Button from '../shared/Button';
 
 const AboutUser = () => {
   // rendering about user component here
