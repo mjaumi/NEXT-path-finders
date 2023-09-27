@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['friendkit.cssninja.io'],
+        domains: ['friendkit.cssninja.io', 'lh3.googleusercontent.com'],
     },
 }
 

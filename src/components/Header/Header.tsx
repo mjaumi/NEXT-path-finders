@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import AuthNavbar from './AuthNavbar';
 
 const Header = () => {
   // rendering header component here
@@ -33,14 +34,8 @@ const Header = () => {
           >
             About
           </Link>
-          <div>
-            <Link
-              href={'/signin'}
-              className='font-medium bg-primary-blue text-primary-white px-5 py-2 rounded-lg hover:opacity-60 duration-300'
-            >
-              Sign in
-            </Link>
-          </div>
+
+          <AuthNavbar />
         </div>
       </nav>
     </header>
