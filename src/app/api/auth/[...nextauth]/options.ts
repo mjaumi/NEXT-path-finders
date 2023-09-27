@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 try {
-                    const { data }: { data: UserRes } = await axios.post(`${process.env.API_URL}/new-user`, body);
+                    const { data }: { data: UserRes } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/new-user`, body);
 
                     console.log(data);
 

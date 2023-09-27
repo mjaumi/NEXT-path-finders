@@ -17,3 +17,27 @@ type UserRes = {
     message: string;
     user: User | null;
 }
+
+// Post Response datatype declared here
+type PostRes = {
+    status: number;
+    message: string;
+    post: Post | null;
+}
+
+// comment datatype declared here
+type Comment = {
+    _id?: string;
+    comment: string;
+    createdBy: Partial<User>;
+}
+
+// Post datatype declared here
+type Post = {
+    _id?: string;
+    text: string;
+    imageUrl: string;
+    comments: Array<Comment>;
+    createdBy: Partial<User>;
+    createdAt: string;
+}
