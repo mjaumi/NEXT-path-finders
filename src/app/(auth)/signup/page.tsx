@@ -1,4 +1,7 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 import SignUpForm from '@/components/AuthComp/SignUpForm';
+import { getServerSession } from 'next-auth/next';
+import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 
 // Media page metadata here
@@ -8,7 +11,14 @@ export const metadata: Metadata = {
 };
 
 // rendering the sign in page here
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  // checking the session data here
+  const session = await getServerSession(authOptions);
+
+  if (session?.user) {
+    redirect('/');
+  }
+
   return (
     <>
       <SignUpForm />

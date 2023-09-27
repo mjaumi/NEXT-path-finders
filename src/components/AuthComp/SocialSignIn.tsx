@@ -8,7 +8,7 @@ import { AiFillGoogleCircle } from 'react-icons/ai';
 const SocialSignIn = () => {
   // handler function to handle sign in with google
   const signInWithGoogleHandler = () => {
-    signIn('google');
+    signIn('google', { callbackUrl: `http://localhost:3000` });
   };
 
   // rendering social sign in component here

@@ -17,7 +17,7 @@ const AuthNavbar = () => {
 
   // rendering authentication related navbar component here
   return (
-    <div>
+    <div className={`${status === 'loading' ? 'invisible' : 'visible'}`}>
       {status === 'authenticated' ? (
         <div className='flex items-center space-x-3'>
           <div className='flex items-center'>
