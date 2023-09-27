@@ -1,4 +1,4 @@
-import Post from '@/components/shared/Post';
+import ShowAllPosts from '@/components/ShowAllPosts/ShowAllPosts';
 import { Metadata } from 'next';
 
 // Media page metadata here
@@ -11,10 +11,7 @@ export const metadata: Metadata = {
 export default function MediaPage() {
   return (
     <>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <ShowAllPosts />
     </>
   );
 }

@@ -10,10 +10,18 @@ export const postsApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+            invalidatesTags: ['posts'],
+        }),
+
+        // GET query to get all the posts from the server
+        getPosts: builder.query<PostsRes, null>({
+            query: () => '/get-posts',
+            providesTags: ['posts'],
         }),
     }),
 });
 
 export const {
     useCreatePostMutation,
+    useGetPostsQuery,
 } = postsApi;

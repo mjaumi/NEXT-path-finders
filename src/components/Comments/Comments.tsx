@@ -10,7 +10,7 @@ type NewComment = {
   comment: string;
 };
 
-const Comments = () => {
+const Comments = ({ comments }: { comments: Array<IComment> }) => {
   const commentHandler = (value: NewComment) => {
     console.log(value);
   };
@@ -19,8 +19,10 @@ const Comments = () => {
   return (
     <div className='border-t p-2 space-y-5'>
       <div className='space-y-5'>
-        <CommentItem />
-        <CommentItem />
+        {comments.length !== 0 &&
+          comments.map((comment: IComment) => (
+            <CommentItem key={comment.createdAt} />
+          ))}
       </div>
 
       <div className='flex items-center space-x-2'>

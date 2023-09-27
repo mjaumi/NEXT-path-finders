@@ -25,11 +25,18 @@ type PostRes = {
     post: Post | null;
 }
 
+// Posts Response datatype declared here
+type PostsRes = {
+    status: number;
+    message: string;
+    posts: Post[] | null;
+}
+
 // comment datatype declared here
-type Comment = {
-    _id?: string;
+interface IComment {
     comment: string;
     createdBy: Partial<User>;
+    createdAt: string;
 }
 
 // Post datatype declared here
@@ -37,7 +44,8 @@ type Post = {
     _id?: string;
     text: string;
     postImageUrl: string;
-    comments: Array<Comment> | [];
+    reacts: number,
+    comments: Array<IComment> | [];
     createdBy: Partial<User>;
     createdAt: string;
 }

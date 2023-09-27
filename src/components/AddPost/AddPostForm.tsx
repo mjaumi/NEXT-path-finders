@@ -33,6 +33,7 @@ const AddPostForm = () => {
     createNewPost({
       text: values.text,
       postImageUrl: values.imgUrl,
+      reacts: 0,
       comments: [],
       createdBy: {
         userName: data?.user?.name as string,
