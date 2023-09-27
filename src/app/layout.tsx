@@ -2,6 +2,7 @@ import Header from '@/components/Header/Header';
 import './globals.css';
 import { Poppins } from 'next/font/google';
 import Footer from '@/components/Footer/Footer';
+import { AuthProvider } from '@/context/AuthContext';
 
 // font data here
 const poppins = Poppins({
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${poppins.variable}`}>
       <body className='font-poppins bg-primary-light-gray'>
-        <Header />
-        <main className='w-[70%] mx-auto min-h-screen pt-24'>{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main className='w-[70%] mx-auto min-h-screen pt-24'>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
