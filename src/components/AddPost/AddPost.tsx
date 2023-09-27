@@ -1,18 +1,38 @@
 import React from 'react';
-import UserInfo from '../UserInfo/UserInfo';
 import AddPostForm from './AddPostForm';
+import UserInfo from '../UserInfo/UserInfo';
+import LinkButton from '../shared/LinkButton';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 
-const AddPost = () => {
+const AddPost = async () => {
+  // checking the session data here
+  const session = await getServerSession(authOptions);
+
   // rendering add post component here
   return (
-    <section className='w-3/5 mx-auto bg-primary-white p-5 rounded-xl shadow-finder-shadow'>
+    <section className='relative w-3/5 mx-auto bg-primary-white p-5 rounded-xl shadow-finder-shadow overflow-hidden'>
       <UserInfo
-        imgUrl='https://friendkit.cssninja.io/assets/img/avatars/jenna.png'
-        userName='Ema Jackson'
+        imgUrl={`${
+          session?.user?.image
+            ? session.user.image
+            : 'https://friendkit.cssninja.io/assets/img/avatars/jenna.png'
+        }`}
+        userName={`${session?.user?.name ? session.user.name : 'Ema Jackson'}`}
         timestamp='MMM DD YYYY, HH:MM'
       />
 
       <AddPostForm />
+
+      {!session?.user && (
+        <div className='absolute h-full w-full bg-primary-white/30 top-0 left-0 backdrop-blur-sm flex justify-center items-center text-primary-black font-semibold'>
+          <div className='flex items-center space-x-2'>
+            <p>Please, </p>
+            <LinkButton href='/signin'>Sign In</LinkButton>
+            <p>To Your Account To Share A Post.</p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

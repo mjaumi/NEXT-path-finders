@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import Avatar from '../shared/Avatar';
 import Button from '../shared/Button';
+import LinkButton from '../shared/LinkButton';
 
 const AuthNavbar = () => {
   // integration of next-auth hooks here
@@ -30,12 +30,7 @@ const AuthNavbar = () => {
           </Button>
         </div>
       ) : (
-        <Link
-          href={'/signin'}
-          className='font-medium bg-primary-blue text-primary-white px-5 py-2 rounded-lg hover:opacity-60 duration-300'
-        >
-          Sign in
-        </Link>
+        <LinkButton href='/signin'>Sing In</LinkButton>
       )}
     </div>
   );
