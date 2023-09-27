@@ -1,5 +1,7 @@
 import Header from '@/components/Header/Header';
 import './globals.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Poppins } from 'next/font/google';
 import Footer from '@/components/Footer/Footer';
 import { AuthProvider } from '@/context/AuthContext';
@@ -30,6 +32,7 @@ export default function RootLayout({
           </ReduxProvider>
           <Footer />
         </AuthProvider>
+        <ToastContainer position='top-center' />
       </body>
     </html>
   );

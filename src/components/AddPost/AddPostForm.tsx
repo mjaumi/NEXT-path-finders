@@ -1,10 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormik } from 'formik';
+import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import ImageUploader from './ImageUploader';
 import { useSession } from 'next-auth/react';
+import { toast } from 'react-toastify';
 import { useCreatePostMutation } from '@/redux/features/post/postApi';
 import moment from 'moment';
 
@@ -23,7 +24,7 @@ const AddPostForm = () => {
 
   // integration of react hooks here
   const [imageUrl, setImageUrl] = useState<string>('');
-  const [showToast, setShowToast] = useState<boolean>(true);
+  const [showToast, setShowToast] = useState<boolean>(false);
 
   // handler function for handling new post uploading feature
   const addNewPostHandler = (values: NewPost) => {
@@ -31,7 +32,7 @@ const AddPostForm = () => {
     setShowToast(true);
     createNewPost({
       text: values.text,
-      postImageUrl: imageUrl,
+      postImageUrl: values.imgUrl,
       comments: [],
       createdBy: {
         userName: data?.user?.name as string,
@@ -41,18 +42,11 @@ const AddPostForm = () => {
     });
   };
 
-  // integration of formik hooks here
-  const addNewPostForm = useFormik({
-    initialValues: {
-      text: '',
-      imgUrl: '',
-    },
-    onSubmit: addNewPostHandler,
-  });
-
+  // showing notification based on post creation success
   if (createNewPostFlags.isSuccess && showToast) {
-    console.log('post uploaded successfully!!');
-    addNewPostForm.resetForm({ values: { text: '', imgUrl: '' } });
+    toast.success('Post Uploaded Successfully!!', {
+      toastId: 'post-create-success',
+    });
     setImageUrl('');
     setShowToast(false);
   }
@@ -60,42 +54,51 @@ const AddPostForm = () => {
   // rendering add post form component here
   return (
     <div className='mt-4'>
-      <form onSubmit={addNewPostForm.handleSubmit} className='space-y-3'>
-        <textarea
-          className='w-full h-[100px] py-2 outline-none text-primary-black resize-none text-sm'
-          name='text'
-          placeholder="What's on your mind..."
-          defaultValue={addNewPostForm.values.text}
-          onChange={addNewPostForm.handleChange}
-        ></textarea>
+      <Formik
+        initialValues={{
+          text: '',
+          imgUrl: '',
+        }}
+        onSubmit={(values: NewPost, { resetForm }) => {
+          addNewPostHandler(values);
+          resetForm();
+        }}
+      >
+        {({ handleChange, values }) => (
+          <Form className='space-y-3'>
+            <textarea
+              className='w-full h-[100px] py-2 outline-none text-primary-black resize-none text-sm'
+              name='text'
+              placeholder="What's on your mind..."
+              defaultValue={values.text}
+              onChange={handleChange}
+            ></textarea>
 
-        {!imageUrl ? (
-          <ImageUploader
-            setImageUrl={setImageUrl}
-            addNewPostForm={addNewPostForm}
-          />
-        ) : (
-          <div className='w-full rounded-xl overflow-hidden'>
-            <Image
-              className='w-full h-auto'
-              src={imageUrl}
-              height={0}
-              width={0}
-              sizes='100%'
-              alt='uploaded image'
-            />
-          </div>
+            {!imageUrl ? (
+              <ImageUploader setImageUrl={setImageUrl} />
+            ) : (
+              <div className='w-full rounded-xl overflow-hidden'>
+                <Image
+                  className='w-full h-auto'
+                  src={imageUrl}
+                  height={0}
+                  width={0}
+                  sizes='100%'
+                  alt='uploaded image'
+                />
+              </div>
+            )}
+            <div className='flex justify-end'>
+              <button
+                type='submit'
+                className='bg-primary-blue text-primary-white px-10 py-2 rounded-lg font-medium hover:opacity-60 duration-300'
+              >
+                Post
+              </button>
+            </div>
+          </Form>
         )}
-
-        <div className='flex justify-end'>
-          <button
-            type='submit'
-            className='bg-primary-blue text-primary-white px-10 py-2 rounded-lg font-medium hover:opacity-60 duration-300'
-          >
-            Post
-          </button>
-        </div>
-      </form>
+      </Formik>
     </div>
   );
 };

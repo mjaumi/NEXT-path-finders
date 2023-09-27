@@ -1,14 +1,16 @@
+import { useFormikContext } from 'formik';
 import React from 'react';
 import axios from 'axios';
 import { TbCameraPlus } from 'react-icons/tb';
 
 const ImageUploader = ({
   setImageUrl,
-  addNewPostForm,
 }: {
   setImageUrl: (arg: string) => void;
-  addNewPostForm: any;
 }) => {
+  // integration of formik hooks here
+  const { setFieldValue } = useFormikContext();
+
   // rendering the image uploader component here
   return (
     <div>
@@ -36,7 +38,7 @@ const ImageUploader = ({
 
             setImageUrl(data.data.url);
 
-            addNewPostForm.values.imgUrl = data.data.url;
+            setFieldValue('imgUrl', data.data.url);
           }
         }}
       />
