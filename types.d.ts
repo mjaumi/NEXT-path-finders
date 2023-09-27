@@ -36,8 +36,8 @@ type Comment = {
 type Post = {
     _id?: string;
     text: string;
-    imageUrl: string;
-    comments: Array<Comment>;
+    postImageUrl: string;
+    comments: Array<Comment> | [];
     createdBy: Partial<User>;
     createdAt: string;
 }
