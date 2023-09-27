@@ -21,7 +21,7 @@ const AuthNavbar = () => {
       {status === 'authenticated' ? (
         <div className='flex items-center space-x-3'>
           <div className='flex items-center'>
-            <p className='mr-2'>{data.user?.name}</p>
+            <p className='mr-2'>{data.user?.name?.split(' ').pop()}</p>
             <Avatar src={data.user?.image as string} />
           </div>
 
