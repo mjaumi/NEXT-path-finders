@@ -31,6 +31,11 @@ export const postsApi = apiSlice.injectEndpoints({
             providesTags: ['posts'],
         }),
 
+        // GET query to get a post by id from the server
+        getPost: builder.query<Post, string>({
+            query: (postId) => `/get-post/${postId}`,
+        }),
+
         // PATCH mutation to add comments in a particular post
         addComment: builder.mutation<CommonRes, IAddComment>({
             query: ({ postId, data }) => ({
@@ -118,4 +123,5 @@ export const {
     useCreatePostMutation,
     useAlterReactionsMutation,
     useGetPostsQuery,
+    useGetPostQuery,
 } = postsApi;

@@ -25,14 +25,15 @@ const Avatar = ({
       }`}
     >
       {src ? (
-        <Image
-          className='w-auto h-auto'
-          src={src}
-          alt='user image'
-          width={0}
-          height={0}
-          sizes='100%'
-        />
+        // <Image
+        //   className='w-auto h-auto'
+        //   src={src}
+        //   alt='user image'
+        //   width={0}
+        //   height={0}
+        //   sizes='100%'
+        // />
+        <></>
       ) : (
         <div className='h-full w-full flex justify-center items-center bg-primary-dark-gray'>
           <FaUser className='h-6 w-6 text-primary-light-gray' />

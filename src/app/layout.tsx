@@ -26,7 +26,7 @@ export default function RootLayout({
         <AuthProvider>
           <ReduxProvider>
             <Header />
-            <main className='w-[70%] mx-auto min-h-screen pt-24'>
+            <main className='w-[95%] md:w-[70%] mx-auto min-h-screen pt-24'>
               {children}
             </main>
             <Footer />

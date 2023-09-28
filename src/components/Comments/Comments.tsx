@@ -36,7 +36,7 @@ const Comments = ({
           ))}
       </div>
 
-      {status !== 'loading' && (
+      {status !== 'loading' && data?.user && (
         <div className='flex items-center space-x-2'>
           <Avatar src={data?.user?.image as string} />
           <div className='bg-primary-light-gray rounded-xl p-3 flex-1'>
