@@ -8,6 +8,7 @@ import { signIn, useSession } from 'next-auth/react';
 import SocialSignIn from './SocialSignIn';
 import { useRouter } from 'next/navigation';
 import InputField from '../shared/InputField';
+import { signInSchema } from '../../../schema';
 
 // sign in datatype declared here
 type SignInData = {
@@ -35,6 +36,7 @@ const SignInForm = () => {
             email: '',
             password: '',
           }}
+          validationSchema={signInSchema}
           onSubmit={async (values: SignInData) => {
             console.log(values);
             signIn('credentials', {

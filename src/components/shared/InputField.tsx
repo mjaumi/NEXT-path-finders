@@ -24,13 +24,15 @@ const InputField = ({
   return (
     <label htmlFor={`${name}_field`}>
       <input
-        className='outline-none w-full bg-primary-light-gray p-3 rounded-xl'
+        className={`outline-none w-full bg-primary-light-gray p-3 rounded-xl ${
+          meta.error && meta.touched && 'border-2 border-primary-red'
+        }`}
         type={type}
         placeholder={placeholder}
         {...field}
       />
       {meta.error && meta.touched && (
-        <span className='text-primary-red text-sm mt-1'>{meta.error}</span>
+        <span className='text-primary-red text-sm mt-1 ml-2'>{meta.error}</span>
       )}
     </label>
   );

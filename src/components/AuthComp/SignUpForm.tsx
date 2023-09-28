@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import SocialSignIn from './SocialSignIn';
 import { useRouter } from 'next/navigation';
 import InputField from '../shared/InputField';
+import { signUpSchema } from '../../../schema';
 
 // sign up datatype declared here
 type SignUpData = {
@@ -38,6 +39,7 @@ const SignUpForm = () => {
             password: '',
             confirmPassword: '',
           }}
+          validationSchema={signUpSchema}
           onSubmit={async (values: SignUpData) => {
             if (values.password === values.confirmPassword) {
               try {
