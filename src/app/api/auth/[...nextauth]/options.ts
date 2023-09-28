@@ -1,4 +1,5 @@
 import GoogleProvider from 'next-auth/providers/google';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import type { NextAuthOptions } from 'next-auth';
 import axios from 'axios';
 
@@ -9,6 +10,38 @@ export const authOptions: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+        }),
+
+        CredentialsProvider({
+            id: 'credentials',
+            name: 'Credentials',
+            credentials: {
+                email: { type: 'text' },
+                password: { type: 'password' },
+            },
+
+            async authorize(credentials): Promise<any> {
+                try {
+                    const body = {
+                        email: credentials?.email,
+                        password: credentials?.password,
+                    }
+
+                    const response = await axios.post(`http://localhost:3000/api/login`, body);
+
+                    const { message, status, user }: UserRes = response.data;
+
+                    console.log(user);
+
+                    if (status !== 200) {
+                        throw new Error('Invalid Credentials');
+                    }
+
+                    return Promise.resolve(user);
+                } catch (error) {
+                    return null;
+                }
+            }
         }),
     ],
     session: {
@@ -21,9 +54,9 @@ export const authOptions: NextAuthOptions = {
 
                 const body: User = {
                     email: email as string,
-                    userName: name as string,
+                    name: name as string,
                     password: '',
-                    imgUrl: user.image as string,
+                    image: user.image as string,
                     university: '',
                     address: '',
                     likedPosts: [],
@@ -43,7 +76,18 @@ export const authOptions: NextAuthOptions = {
                 } catch (error) {
                     return null;
                 }
+            } else if (account?.provider === 'credentials') {
+                return user;
             }
-        }
+        },
+        jwt: async ({ token, user }) => {
+            user && (token.user = user)
+            return token;
+        },
+        session: async ({ session, token }) => {
+            const user = token.user as User;
+            session.user = user;
+            return session;
+        },
     }
 }

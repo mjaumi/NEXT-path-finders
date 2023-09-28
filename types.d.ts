@@ -4,8 +4,8 @@ type User = {
     _id?: string;
     email: string;
     password: string | null;
-    userName: string;
-    imgUrl: string | null;
+    name: string;
+    image: string | null;
     university: string | null;
     address: string | null;
     likedPosts: string[],

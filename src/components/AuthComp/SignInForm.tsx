@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Formik, Form } from 'formik';
-import InputField from '../shared/InputField';
-import Button from '../shared/Button';
 import Link from 'next/link';
+import Button from '../shared/Button';
+import { Formik, Form } from 'formik';
+import { signIn, useSession } from 'next-auth/react';
 import SocialSignIn from './SocialSignIn';
+import { useRouter } from 'next/navigation';
+import InputField from '../shared/InputField';
 
 // sign in datatype declared here
 type SignInData = {
@@ -14,10 +16,10 @@ type SignInData = {
 };
 
 const SignInForm = () => {
-  // handler function to handle sign in feature
-  const signInHandler = (values: SignInData) => {
-    console.log(values);
-  };
+  // integration of next hooks here
+  const router = useRouter();
+
+  const { status, data } = useSession();
 
   // rendering signin form component here
   return (
@@ -33,7 +35,23 @@ const SignInForm = () => {
             email: '',
             password: '',
           }}
-          onSubmit={signInHandler}
+          onSubmit={async (values: SignInData) => {
+            console.log(values);
+            signIn('credentials', {
+              email: values.email,
+              password: values.password,
+              redirect: false,
+            }).then((callback) => {
+              console.log(data, status);
+              if (callback?.ok && !callback.error) {
+                router.push('/');
+              }
+
+              if (callback?.error) {
+                console.log(callback);
+              }
+            });
+          }}
         >
           <Form className='space-y-5'>
             <div>

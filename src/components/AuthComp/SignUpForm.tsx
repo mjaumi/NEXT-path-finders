@@ -1,11 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Formik, Form } from 'formik';
-import InputField from '../shared/InputField';
-import Button from '../shared/Button';
+import axios from 'axios';
 import Link from 'next/link';
+import Button from '../shared/Button';
+import { Formik, Form } from 'formik';
+import { toast } from 'react-toastify';
 import SocialSignIn from './SocialSignIn';
+import { useRouter } from 'next/navigation';
+import InputField from '../shared/InputField';
 
 // sign up datatype declared here
 type SignUpData = {
@@ -16,10 +19,8 @@ type SignUpData = {
 };
 
 const SignUpForm = () => {
-  // handler function to handle sign up feature
-  const signUpHandler = (values: SignUpData) => {
-    console.log(values);
-  };
+  // integration of next hooks here
+  const router = useRouter();
 
   // rendering sign up form component here
   return (
@@ -37,7 +38,42 @@ const SignUpForm = () => {
             password: '',
             confirmPassword: '',
           }}
-          onSubmit={signUpHandler}
+          onSubmit={async (values: SignUpData) => {
+            if (values.password === values.confirmPassword) {
+              try {
+                const body: User = {
+                  name: values.userName,
+                  email: values.email,
+                  password: values.password,
+                  university: '',
+                  address: '',
+                  likedPosts: [],
+                  image: '',
+                  provider: 'credentials',
+                };
+
+                const { data }: { data: UserRes } = await axios.post(
+                  `${process.env.NEXT_PUBLIC_API_URL}/user-signup`,
+                  body
+                );
+
+                if (data.status === 200) {
+                  toast.success(data.message, {
+                    toastId: 'signup-success',
+                  });
+                  router.replace('/signin');
+                } else {
+                  toast.error(data.message, {
+                    toastId: 'signup-error',
+                  });
+                }
+              } catch (error) {}
+            } else {
+              toast.error('Password Mismatched!', {
+                toastId: 'mismatched-error',
+              });
+            }
+          }}
         >
           <Form className='space-y-5'>
             <div>

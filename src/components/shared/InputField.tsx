@@ -25,9 +25,9 @@ const InputField = ({
     <label htmlFor={`${name}_field`}>
       <input
         className='outline-none w-full bg-primary-light-gray p-3 rounded-xl'
-        name={name}
         type={type}
         placeholder={placeholder}
+        {...field}
       />
       {meta.error && meta.touched && (
         <span className='text-primary-red text-sm mt-1'>{meta.error}</span>

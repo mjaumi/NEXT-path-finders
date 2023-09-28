@@ -1,5 +1,8 @@
 import AboutUser from '@/components/AboutUser/AboutUser';
 import { Metadata } from 'next';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/options';
+import { redirect } from 'next/navigation';
 
 // About page metadata here
 export const metadata: Metadata = {
@@ -8,7 +11,14 @@ export const metadata: Metadata = {
 };
 
 // rendering the about page here
-export default function AboutPage() {
+export default async function AboutPage() {
+  // checking the session data here
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user) {
+    redirect('/signin');
+  }
+
   return (
     <>
       <AboutUser />

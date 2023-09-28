@@ -25,7 +25,7 @@ const AboutUser = () => {
           </div>
           <div className='flex justify-center'>
             <Avatar
-              src={user.imgUrl as string}
+              src={user.image as string}
               height='80px'
               width='80px'
               hasBorder
@@ -33,7 +33,7 @@ const AboutUser = () => {
           </div>
 
           <div className='text-center text-primary-black'>
-            <h4 className='text-3xl font-semibold'>{user.userName}</h4>
+            <h4 className='text-3xl font-semibold'>{user.name}</h4>
             <p className='text-sm text-primary-dark-gray'>{user.email}</p>
           </div>
 
