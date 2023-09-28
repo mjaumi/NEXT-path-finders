@@ -14,8 +14,8 @@ const Post = ({ post }: { post: Post }) => {
   return (
     <div className='w-3/5 mx-auto bg-primary-white p-5 rounded-xl shadow-finder-shadow my-5 space-y-4'>
       <UserInfo
-        imgUrl={createdBy.imgUrl as string}
-        userName={createdBy.userName as string}
+        imgUrl={createdBy.image as string}
+        userName={createdBy.name as string}
         timestamp={createdAt}
       />
 

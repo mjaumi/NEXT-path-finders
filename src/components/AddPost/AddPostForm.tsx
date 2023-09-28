@@ -36,8 +36,8 @@ const AddPostForm = () => {
       reacts: 0,
       comments: [],
       createdBy: {
-        userName: data?.user?.name as string,
-        imgUrl: data?.user?.image as string,
+        name: data?.user?.name as string,
+        image: data?.user?.image as string,
       },
       createdAt: moment().format('MMMM DD YYYY, h:mma'),
     });
@@ -92,7 +92,8 @@ const AddPostForm = () => {
             <div className='flex justify-end'>
               <button
                 type='submit'
-                className='bg-primary-blue text-primary-white px-10 py-2 rounded-lg font-medium hover:opacity-60 duration-300'
+                className='bg-primary-blue text-primary-white px-10 py-2 rounded-lg font-medium hover:opacity-60 duration-300 disabled:opacity-40 disabled:cursor-not-allowed'
+                disabled={!values.imgUrl || !values.text}
               >
                 Post
               </button>

@@ -50,8 +50,8 @@ const Comments = ({
                   data: {
                     comment: value.comment,
                     createdBy: {
-                      userName: data?.user?.name as string,
-                      imgUrl: data?.user?.image as string,
+                      name: data?.user?.name as string,
+                      image: data?.user?.image as string,
                     },
                     createdAt: moment().format('MMMM DD YYYY, h:mm:ssa'),
                   },

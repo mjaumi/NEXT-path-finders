@@ -9,17 +9,11 @@ const CommentItem = ({ comment }: { comment: IComment }) => {
   return (
     <div className='flex items-start space-x-2'>
       <div>
-        <Avatar
-          src={
-            createdBy.imgUrl
-              ? createdBy.imgUrl
-              : 'https://friendkit.cssninja.io/assets/img/avatars/jenna.png'
-          }
-        />
+        <Avatar src={createdBy.image as string} />
       </div>
 
       <div className='bg-primary-light-gray px-3 py-2 rounded-xl w-fit text-sm text-primary-black'>
-        <h6 className='font-semibold'>{createdBy.userName}</h6>
+        <h6 className='font-semibold'>{createdBy.name}</h6>
         <p>{commentText}</p>
       </div>
     </div>
