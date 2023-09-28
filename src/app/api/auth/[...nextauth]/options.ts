@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
                     imgUrl: user.image as string,
                     university: '',
                     address: '',
+                    likedPosts: [],
                     provider: account.provider,
                 }
 

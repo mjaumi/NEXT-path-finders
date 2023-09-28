@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { FaRegComment } from 'react-icons/fa';
 import React from 'react';
 import Comments from '../Comments/Comments';
 import Avatar from './Avatar';
 import UserInfo from '../UserInfo/UserInfo';
+import Reactions from './Reactions';
 
 const Post = ({ post }: { post: Post }) => {
   // destructuring the post object here
@@ -35,17 +34,7 @@ const Post = ({ post }: { post: Post }) => {
         />
       </div>
 
-      <div className='flex justify-between items-center px-4'>
-        <p className='text-sm text-primary-dark-gray'>
-          {reacts
-            ? `${reacts} people reacted on this`
-            : 'Be the first to react on this'}
-        </p>
-        <div className='flex items-center space-x-5'>
-          <AiOutlineHeart className='h-7 w-7 text-primary-dark-gray hover:opacity-60 hover:scale-125 duration-300 cursor-pointer' />
-          <FaRegComment className='h-6 w-6 text-primary-dark-gray hover:opacity-60 hover:scale-125 duration-300 cursor-pointer' />
-        </div>
-      </div>
+      <Reactions reacts={reacts} postId={_id as string} />
 
       <Comments comments={comments} postId={_id as string} />
     </div>

@@ -8,6 +8,7 @@ type User = {
     imgUrl: string | null;
     university: string | null;
     address: string | null;
+    likedPosts: string[],
     provider: string;
 }
 
