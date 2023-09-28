@@ -13,7 +13,7 @@ export default function FeedPage() {
   return (
     <>
       <AddPost />
-      {/* <FeaturedPosts /> */}
+      <FeaturedPosts />
     </>
   );
 }

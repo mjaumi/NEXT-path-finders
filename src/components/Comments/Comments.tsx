@@ -53,7 +53,7 @@ const Comments = ({
                       userName: data?.user?.name as string,
                       imgUrl: data?.user?.image as string,
                     },
-                    createdAt: moment().format('MMMM DD YYYY, h:mma'),
+                    createdAt: moment().format('MMMM DD YYYY, h:mm:ssa'),
                   },
                 });
                 setValues({ comment: '' });
