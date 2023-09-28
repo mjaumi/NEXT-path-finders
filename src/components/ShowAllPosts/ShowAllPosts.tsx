@@ -12,15 +12,15 @@ const ShowAllPosts = () => {
   let content = null;
 
   if (isLoading) {
-    content = <p>Loading</p>;
+    content = <p className='text-center mt-10'>Loading</p>;
   }
 
   if (!isLoading && isError) {
-    content = <p>Error</p>;
+    content = <p className='text-center mt-10'>Error</p>;
   }
 
   if (!isLoading && !isError && !postsResponse?.posts?.length) {
-    content = <p>No Posts Found!!</p>;
+    content = <p className='text-center mt-10'>No Posts Found!!</p>;
   }
 
   if (!isLoading && !isError && postsResponse?.posts?.length) {
