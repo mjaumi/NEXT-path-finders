@@ -8,7 +8,8 @@ import UserInfo from '../UserInfo/UserInfo';
 
 const Post = ({ post }: { post: Post }) => {
   // destructuring the post object here
-  const { text, postImageUrl, createdBy, createdAt, comments, reacts } = post;
+  const { _id, text, postImageUrl, createdBy, createdAt, comments, reacts } =
+    post;
 
   // rendering the post component here
   return (
@@ -46,7 +47,7 @@ const Post = ({ post }: { post: Post }) => {
         </div>
       </div>
 
-      <Comments comments={comments} />
+      <Comments comments={comments} postId={_id as string} />
     </div>
   );
 };

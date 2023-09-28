@@ -32,6 +32,12 @@ type PostsRes = {
     posts: Post[] | null;
 }
 
+// Comment add Response datatype declared here
+type CommentRes = {
+    status: number;
+    message: string;
+}
+
 // comment datatype declared here
 interface IComment {
     comment: string;
