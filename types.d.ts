@@ -33,8 +33,8 @@ type PostsRes = {
     posts: Post[] | null;
 }
 
-// Comment add Response datatype declared here
-type CommentRes = {
+// Common Response datatype declared here
+type CommonRes = {
     status: number;
     message: string;
 }
