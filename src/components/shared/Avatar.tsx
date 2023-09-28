@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { FaUser } from 'react-icons/fa';
 
 // interface for avatar datatype here
 interface IAvatar {
@@ -23,14 +24,20 @@ const Avatar = ({
         hasBorder && 'border-2 border-primary-blue'
       }`}
     >
-      <Image
-        className='w-auto h-auto'
-        src={src}
-        alt='user image'
-        width={0}
-        height={0}
-        sizes='100%'
-      />
+      {src ? (
+        <Image
+          className='w-auto h-auto'
+          src={src}
+          alt='user image'
+          width={0}
+          height={0}
+          sizes='100%'
+        />
+      ) : (
+        <div className='h-full w-full flex justify-center items-center bg-primary-dark-gray'>
+          <FaUser className='h-6 w-6 text-primary-light-gray' />
+        </div>
+      )}
     </div>
   );
 };
