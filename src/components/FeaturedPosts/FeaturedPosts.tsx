@@ -35,24 +35,24 @@ const FeaturedPosts = () => {
         </div>
 
         <div className='mt-10'>
-          {posts
-            .sort((a, b) =>
-              !a.reacts && !b.reacts
-                ? 0
-                : !a.reacts
-                ? 1
-                : !b.reacts
-                ? -1
-                : a.reacts < b.reacts
-                ? 1
-                : a.reacts > b.reacts
-                ? -1
-                : 0
-            )
-            .slice(0, posts.length > 3 ? 3 : posts.length - 1)
-            .map((post) => (
-              <Post key={post._id} post={post} />
-            ))}
+          {posts.length > 3
+            ? posts
+                .sort((a, b) =>
+                  !a.reacts && !b.reacts
+                    ? 0
+                    : !a.reacts
+                    ? 1
+                    : !b.reacts
+                    ? -1
+                    : a.reacts < b.reacts
+                    ? 1
+                    : a.reacts > b.reacts
+                    ? -1
+                    : 0
+                )
+                .slice(0, 3)
+                .map((post) => <Post key={post._id} post={post} />)
+            : posts.map((post) => <Post key={post._id} post={post} />)}
         </div>
       </section>
     );
