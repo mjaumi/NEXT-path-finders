@@ -26,14 +26,6 @@ const Comments = ({
   // integration of next-auth hooks here
   const { status, data } = useSession();
 
-  const commentHandler = (value: NewComment) => {
-    console.log(value);
-  };
-
-  if (addRes) {
-    console.log(addRes);
-  }
-
   // rendering the comments component here
   return (
     <div className='border-t p-2 space-y-5'>
@@ -52,8 +44,7 @@ const Comments = ({
               initialValues={{
                 comment: '',
               }}
-              onSubmit={(value: NewComment, { resetForm }) => {
-                console.log(value);
+              onSubmit={(value: NewComment, { setValues }) => {
                 addComment({
                   postId,
                   data: {
@@ -65,7 +56,7 @@ const Comments = ({
                     createdAt: moment().format('MMMM DD YYYY, h:mma'),
                   },
                 });
-                resetForm({});
+                setValues({ comment: '' });
               }}
             >
               {({ handleChange, values }) => (
@@ -75,7 +66,7 @@ const Comments = ({
                     name='comment'
                     type='text'
                     placeholder='Write a comment...'
-                    defaultValue={values.comment}
+                    value={values.comment}
                     onChange={handleChange}
                   />
                   <button

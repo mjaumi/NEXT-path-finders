@@ -71,7 +71,7 @@ const AddPostForm = () => {
               className='w-full h-[100px] py-2 outline-none text-primary-black resize-none text-sm'
               name='text'
               placeholder="What's on your mind..."
-              defaultValue={values.text}
+              value={values.text}
               onChange={handleChange}
             ></textarea>
 
